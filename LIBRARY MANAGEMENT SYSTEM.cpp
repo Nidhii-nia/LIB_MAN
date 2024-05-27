@@ -66,25 +66,6 @@ void Lib::show(int i)
                 else
                 {
                     cout<<"\n\t    ************ Book List ************ \n\n";
-                    intf.read((char*)this,sizeof(*this));
-                while(!intf.eof())
-                {
-                    if(b==B)
-                    {
-                        if(q==0 && i==1)
-                        {
-
-                        }
-                        else
-                            {
-                                r++;
-                                cout<<"\n\t\t********** "<<r<<". ********** \n";
-                                show(i);
-                            }
-                    }
-                    intf.read((char*)this,sizeof(*this));
-                }
-                }
                 cout<<"\n\t\tPress any key to continue.....";
                 getch();
                 if(i==1)
