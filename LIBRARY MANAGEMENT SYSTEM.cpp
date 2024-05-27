@@ -36,7 +36,6 @@ class Lib
 void Lib::getdata()
 {
                     int i;
-                    fflush(stdin);
                     cout<<"\n\t\tEnter the details :-\n";
                     cout<<"\n\t\tEnter Book's Name : ";
                     cin.getline(bookname,100);
