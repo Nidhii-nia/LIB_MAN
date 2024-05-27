@@ -19,19 +19,13 @@ class Lib
            p=0; //price
        }
           void get();
-          void student();
-          void pass();
           void librarian();
-          void password();
           void getdata();
           void show(int);
           void booklist(int);
           void modify();
           void see(int);
-          int branch(int);
           void issue();
-          void der(char[],int,int);
-          void fine(int,int,int,int,int,int);
 };
 void Lib::getdata()
 {
@@ -330,36 +324,6 @@ void Lib::show(int i)
     librarian();
 
   }
-  int Lib::branch(int x)
-  {
-      int i;
-      cout<<"\n\t\t>>Please Choose one Branch :-\n";
-      cout<<"\n\t\t1.CSE\n\n\t\t2.EEE\n\n\t\t3.ECONOMICS\n\n\t\t4.OTHERS\n\n\t\t5.FAMOUS NOVELS\n\n\t\t6.Go to menu\n";
-      cout<<"\n\t\tEnter your choice : ";
-      cin>>i;
-      switch(i)
-      {
-          case 1: return 1;
-                  break;
-          case 2: return 2;
-                  break;
-          case 3: return 3;
-                  break;
-          case 4: return 4;
-                  break;
-          case 5: return 5;
-                  break;
-          case 6: system("cls");
-                  if(x==1)
-                  student();
-                  else
-                    librarian();
-          default : cout<<"\n\t\tPlease enter correct option :(";
-                    getch();
-                    system("cls");
-                    branch(x);
-        }
-  }
   void Lib::see(int x)
   {
       int i,b,cont=0;
@@ -616,13 +580,7 @@ void Lib::issue()
     system("cls");
     librarian();
 }
-void Lib::fine(int d,int m,int y,int dd,int mm,int yy)
-{
-    long int n1,n2;
-    int years,l,i;
-    const int monthDays[12] = {31, 28, 31, 30, 31, 30,31, 31, 30, 31, 30, 31};
-    n1 = y*365 + d;
-    for (i=0; i<m - 1; i++)
+
         n1 += monthDays[i];
     years = y;
     if (m <= 2)
@@ -705,80 +663,12 @@ void Lib::get()
            get();
         }
 }
-void Lib::student()
-{
-    int i;
-        cout<<"\n\t************ WELCOME STUDENT ************\n";
-        cout<<"\n\t\t>>Please Choose One Option:\n";
-        cout<<"\n\t\t1.View BookList\n\n\t\t2.Search for a Book\n\n\t\t3.Go to main menu\n\n\t\t4.Close Application\n";
-        cout<<"\n\t\tEnter your choice : ";
-        cin>>i;
-            if(i==1)
-                booklist(1);
-            else if(i==2)
-                see(1);
-            else if(i==3)
-            {
-                system("cls");
-                get();
-            }
-            else if(i==4)
-                exit(0);
-            else
-            {
-                cout<<"\n\t\tPlease enter correct option :(";
-                system("cls");
-                student();
-            }
-}
-void Lib::pass()
-{
-    int i=0;
-    char ch,st[21],ch1[21]={"pass"};
-    cout<<"\n\t\tEnter Password : ";
-    while(1)
-    {
-    ch=getch();
-    if(ch==13)
-    {
-        st[i]='\0';
-        break;
-    }
-    else if(ch==8&&i>0)
-    {
-        i--;
-        cout<<"\b \b";
-    }
-    else
-    {
-    cout<<"*";
-    st[i]=ch;
-    i++;
-    }
-    }
-    ifstream inf("password.txt");
-    inf>>ch1;
-    inf.close();
-    for(i=0;st[i]==ch1[i]&&st[i]!='\0'&&ch1[i]!='\0';i++);
-    if(st[i]=='\0'&&ch1[i]=='\0')
-    {
-        system("cls");
-        librarian();
-    }
-    else
-    {
-        cout<<"\n\n\t\tWrong Password.\n\n\t\ttry again.....\n";
-        getch();
-        system("cls");
-        get();
-    }
-}
+
 void Lib::librarian()
 {
     int i;
-        cout<<"\n\t************ WELCOME LIBRARIAN ************\n";
-        cout<<"\n\t\t>>Please Choose One Option:\n";
-        cout<<"\n\t\t1.View BookList\n\n\t\t2.Search for a Book\n\n\t\t3.Modify/Add Book\n\n\t\t4.Issue Book\n\n\t\t5.Go to main menu\n\n\t\t6.Change Password\n\n\t\t7.Close Application\n";
+        cout<<"\n\t************ WELCOME TO E-LIBRARY ************\n";
+        cout<<"\n\t\t1.Add book\n\n\t\t2.Display Books\n\n\t\t3.Display all books of given Author.\n\n\t\t4.Display Count of Books in the E-Library.\n\n\t\t5.exit\n\n\t\t\n\n\t\t;
         cout<<"\n\t\tEnter your choice : ";
         cin>>i;
         switch(i)
@@ -803,98 +693,7 @@ void Lib::librarian()
             librarian();
         }
 }
-void Lib::password()
-{
-    int i=0,j=0;
-    char ch,st[21],ch1[21]={"pass"};
-    system("cls");
-    cout<<"\n\n\t\tEnter Old Password : ";
-    while(1)
-    {
-    ch=getch();
-    if(ch==13)
-    {
-        st[i]='\0';
-        break;
-    }
-    else if(ch==8&&i>0)
-    {
-        i--;
-        cout<<"\b \b";
-    }
-    else
-    {
-    cout<<"*";
-    st[i]=ch;
-    i++;
-    }
-    }
-    ifstream intf("password.txt");
-    intf>>ch1;
-    intf.close();
-    for(i=0;st[i]==ch1[i]&&st[i]!='\0'&&ch1[i]!='\0';i++);
-    if(st[i]=='\0'&&ch1[i]=='\0')
-    {
-        system("cls");
-        cout<<"\n\t**The Password Should be less than 20 characters & don't use spaces**\n\n";
-        cout<<"\n\t\tEnter New Password : ";
-        fflush(stdin);
-        i=0;
-        while(1)
-        {
-        j++;
-        ch=getch();
-        if(ch==13)
-        {
-            for(i=0;st[i]!=' '&&st[i]!='\0';i++);
-            if(j>20 || st[i]==' ')
-            {
-                cout<<"\n\n\t\tYou did't follow the instruction \n\n\t\tPress any key for try again.....";
-                getch();
-                system("cls");
-                password();
-                librarian();
-            }
-            st[i]='\0';
-            break;
-        }
-        else if(ch==8&&i>0)
-        {
-            i--;
-            cout<<"\b \b";
-        }
-        else
-        {
-        cout<<"*";
-        st[i]=ch;
-        i++;
-        }
-        }
-        ofstream outf("password.txt");
-        outf<<st;
-        outf.close();
-        cout<<"\n\n\t\tYour Password has been changed Successfully.";
-        cout<<"\n\t\tPress any key to continue......";
-        getch();
-        system("cls");
-        librarian();
-    }
-    else
-    {
-        cout<<"\n\n\t\tPassword is incorrect.....\n";
-        cout<<"\n\t\tEnter 1 for retry or 2 for menu";
-        cin>>i;
-        if(i==1)
-        {
-        system("cls");
-        password();
-        }
-        else
-        {
-            system("cls");
-            librarian();
-        }
-    }
+
 }
 int main()
 {
