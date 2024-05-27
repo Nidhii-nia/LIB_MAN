@@ -33,11 +33,6 @@ void Lib::getdata()
                     cout<<"\n\t\tEnter the details :-\n";
                     cout<<"\n\t\tEnter Book's Name : ";
                     cin.getline(bookname,100);
-                    for(i=0;bookname[i]!='\0';i++)
-                    {
-                    if(bookname[i]>='a'&&bookname[i]<='z')
-                       bookname[i]-=32;
-                    }
                     cout<<"\n\t\tEnter Author's Name : ";
                     cin.getline(auname,50);
                     cout<<"\n\t\tEnter Publication name : ";
@@ -66,8 +61,6 @@ void Lib::show(int i)
                 int b,r=0;
                 system("cls");
                 b=branch(i);
-                system("cls");
-                ifstream intf("Booksdata.txt",ios::binary);
                 if(!intf)
                     cout<<"\n\t\tFile Not Found.";
                 else
@@ -94,7 +87,6 @@ void Lib::show(int i)
                 }
                 cout<<"\n\t\tPress any key to continue.....";
                 getch();
-                system("cls");
                 if(i==1)
                     student();
                 else
@@ -113,17 +105,6 @@ void Lib::show(int i)
     {
                     system("cls");
                     b=branch(2);
-                    ifstream intf1("Booksdata.txt",ios::binary);
-                    if(!intf1)
-                    {
-                        cout<<"\n\t\tFile Not Found\n";
-                        cout<<"\n\t\tPress any key to continue.....";
-                        getch();
-                        system("cls");
-                        librarian();
-                    }
-                        intf1.close();
-                        system("cls");
                         cout<<"\n\t\tPlease Choose One Option :-\n";
                         cout<<"\n\t\t1.Search By Book Name\n\n\t\t2.Search By Book's ID\n";
                         cout<<"\n\t\tEnter Your Choice : ";
@@ -133,14 +114,7 @@ void Lib::show(int i)
                             {
                                 system("cls");
                                 cout<<"\n\t\tEnter Book Name : ";
-                                cin.getline(st1,100);
-                                system("cls");
-                                fstream intf("Booksdata.txt",ios::in|ios::out|ios::ate|ios::binary);
-                                intf.seekg(0);
-                                intf.read((char*)this,sizeof(*this));
-                                while(!intf.eof())
-                                    {
-                                        for(i=0;b==B&&bookname[i]!='\0'&&st1[i]!='\0'&&(st1[i]==bookname[i]||st1[i]==bookname[i]+32);i++);
+                                cin.getline(st1,10);
                                         if(bookname[i]=='\0'&&st1[i]=='\0')
                                             {
                                                 cont++;
@@ -151,7 +125,7 @@ void Lib::show(int i)
                                             }
                                                      intf.read((char*)this,sizeof(*this));
                                     }
-                                    intf.close();
+                                 
                             }
                         else if(i==2)
                         {
